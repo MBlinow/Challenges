@@ -1,3 +1,4 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
 t=int(raw_input().strip())
 for a0 in xrange(t):
     n = int(raw_input().strip())
@@ -20,16 +21,12 @@ for a0 in xrange(t):
             if (aMax-aMin)>=5:
                 reps=(aMax-secondSmallest())/5
                 if reps>1: 
+                    #print 'rep5', len(arr)
                     addAll(reps*5, aMax)
                     count+=reps
                 else: 
                     addAll(5, aMax)
                     count+=1
-            #if (aMax-aMin)>=5:
-            #    reps=(aMax-aMin)/5
-            #    addAll(reps*5, aMax)
-            #    count+=reps
-                
                 
             elif (aMax-aMin)>=2:
                 addAll(2, aMax)
@@ -44,8 +41,11 @@ for a0 in xrange(t):
 
     def secondSmallest():
         tempArr=arr
+        larger=max(tempArr)
         tempArr.remove(max(tempArr))
-        return max(tempArr)
+        secondLargest=max(tempArr)
+        tempArr.append(larger)
+        return secondLargest
         
     def addAll(n, aMax):
         global arr
