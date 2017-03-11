@@ -1,0 +1,8 @@
+Notes
+
+This has probably been the hardest challenge I've tackled on hackerrank
+
+I'm still fairly slow at getting my code all written and working, but after getting a basic
+skeleton down I also had to fine tune the logic of my solution.
+
+It still isn't 100% done, so I'll keep working on it today.
