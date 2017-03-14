@@ -2,3 +2,9 @@ Solved most of the test cases, but a few of them return timeout errors.
 
 I think I've exhausted my own ideas on how to optimize this more, so I'll have to read up 
 on how to do that.
+
+After reading up on the problem, it looks like this problem is particularly difficult to solve
+within the alloted time when using Python, so maybe my logic isn't so bad.
+
+Also I came fairly close to developing my own version of the Floyd-Warshall algorithm without ever
+having heard of it, so that's cool.
