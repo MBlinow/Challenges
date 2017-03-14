@@ -14,10 +14,19 @@ class Node:
         
        
     def addPath(self,destination, distance):
+        bpathLen=len(self.paths)
         self.paths[destination]=distance
-        self.pathsList.append(destination)        
+        apathLen=len(self.paths)
+        if apathLen!=bpathLen:
+            self.pathsList.append(destination)        
         
-
+    def printInfo(self): #for debugging
+        print '========'
+        print 'nodeNumber:', self.nodeNumber
+        print 'Paths:', self.pathsList, self.paths
+        print 'Distances:', self.distancesList, self.distances
+        print 'hasPushed', self.hasPushed
+        print '========='
         
         
         #Adds Dist from D to B in B.distances
@@ -39,23 +48,26 @@ class Node:
         global lst
         global targetList
         for i in range(1, len(self.paths)+1):
+            
+            #i should be the paths linked to current node
             goal=lst[self.pathsList[i]]    
-            #if self.hasPushed==False:
                 #Shares distance info of current node to each connected node
-                # goalDist= self.paths.get(self.pathsList[i])
-                #goal.distances[self.nodeNumber]=goalDist
-                #goal.distancesList.append(self.nodeNumber)                
-                #targetList.append(goal.nodeNumber)
+
             
             for j in range(0, len(self.distances)):
+
                 targetDictValue=goal.distances.get(self.distancesList[j], None)
 
-                if targetDictValue==None or targetDictValue>self.distances[self.distancesList[j]]:
-                    goal.distancesList.append(self.distancesList[j])
-                    goal.distances[self.distancesList[j]]=self.distances.get(self.distancesList[j])+self.paths[i]
+                if targetDictValue==None or targetDictValue>self.distances[self.distancesList[j]]+self.paths[self.pathsList[i]] :
+
                     
+                    if targetDictValue==None:goal.distancesList.append(self.distancesList[j])
+                    totalDist=self.distances.get(self.distancesList[j])+self.paths[self.pathsList[i]]  
+                    goal.distances[self.distancesList[j]]=totalDist
+
                     targetList.append(goal.nodeNumber)
-        #self.hasPushed=True
+
+
         
         
 def getDistance(start, target):
@@ -69,7 +81,7 @@ for i in range(n):
     lst.append(Node(i+1))
 
     #Fills Nodes with path information
-for _ in range (n+1):
+for _ in range (m):
     a, b, c=(raw_input().split(' '))
     a=int(a)
     b=int(b)
@@ -92,6 +104,7 @@ def pathFind(e, f):
         else:
             lst[targetList[0]].revUpdateDistances()
         del targetList[0]
+
    
 
         
@@ -101,7 +114,9 @@ for i in range(d):
     f=int(f)
     pathFind(e, f)
     answer=lst[e].distances.get(f, None)
-    if answer==None: print -1
+    if e==f: print 0
+    elif answer==None: 
+        print -1
     else: print answer
 
 

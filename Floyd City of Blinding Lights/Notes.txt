@@ -1,2 +1,4 @@
-My solution solves the problem, but still gets runtime errors
-I'll have to figure out how to make it more efficient.
+Solved most of the test cases, but a few of them return timeout errors.
+
+I think I've exhausted my own ideas on how to optimize this more, so I'll have to read up 
+on how to do that.
